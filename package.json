@@ -1,0 +1,21 @@
+{
+  "name": "hackathon-idea-s2026",
+  "version": "1.0.0",
+  "description": "The plan is to create an app that finds indie related events and places for the people to explore",
+  "main": "index.mjs",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jai-serr-ace/hackathon-idea-s2026.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/jai-serr-ace/hackathon-idea-s2026/issues"
+  },
+  "homepage": "https://github.com/jai-serr-ace/hackathon-idea-s2026#readme"
+}
