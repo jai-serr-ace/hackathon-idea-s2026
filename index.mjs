@@ -5,7 +5,7 @@ app.use(express.static("public"));
 
 
 app.get('/', (req, res) => {
-   res.send('Hello Express app!')
+   res.render('home.ejs')
 });
 
 
