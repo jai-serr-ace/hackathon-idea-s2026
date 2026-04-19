@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results for <%= search %></title>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body class="results-page">
+    <%- include("partials/navbar") %>
+
+    <main class="results-shell">
+        <section class="results-hero">
+            <p class="eyebrow">Search Results</p>
+            <h1>Local finds for "<%= search %>"</h1>
+            <a class="search-button results-back-link" href="/">Search again</a>
+        </section>
+
+        <% if (stores.length) { %>
+            <section class="results-grid">
+                <% stores.forEach((store) => { %>
+                    <article class="result-card">
+                        <% if (store.image) { %>
+                            <img class="result-image" src="<%= store.image %>" alt="<%= store.name || 'Unnamed place' %>">
+                        <% } else if (store.address) { %>
+                            <img
+                                class="result-image"
+                                src="/api/mapbox/static-image?q=<%= encodeURIComponent(store.address) %>&width=900&height=500&zoom=14"
+                                alt="Map preview for <%= store.name || 'Unnamed place' %>"
+                            >
+                        <% } else { %>
+                            <div class="result-image result-image-placeholder" aria-hidden="true">No image</div>
+                        <% } %>
+
+                        <div class="result-body">
+                            <p class="result-kicker">Independent Spot</p>
+                            <h2><%= store.name || "Unnamed place" %></h2>
+                            <p class="result-description"><%= store.description || "No description was provided." %></p>
+
+                            <dl class="result-meta">
+                                <div>
+                                    <dt>Address</dt>
+                                    <dd><%= store.address || "Address unavailable" %></dd>
+                                </div>
+                                <div>
+                                    <dt>Phone</dt>
+                                    <dd><%= store.phone || "Not listed" %></dd>
+                                </div>
+                            </dl>
+
+                            <% if (store.website) { %>
+                                <a class="result-link" href="<%= store.website %>" target="_blank" rel="noreferrer">Visit website</a>
+                            <% } else { %>
+                                <span class="result-link result-link-muted">Website unavailable</span>
+                            <% } %>
+                        </div>
+                    </article>
+                <% }) %>
+            </section>
+        <% } else { %>
+            <section class="empty-state">
+                <h2>No matches yet</h2>
+                <p>Try a different prompt to explore another kind of local spot.</p>
+            </section>
+        <% } %>
+    </main>
+</body>
+</html>

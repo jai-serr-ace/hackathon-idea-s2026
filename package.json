@@ -4,6 +4,8 @@
   "description": "The plan is to create an app that finds indie related events and places for the people to explore",
   "main": "index.mjs",
   "scripts": {
+    "start": "node index.mjs",
+    "dev": "node --watch index.mjs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,9 +15,14 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/jai-serr-ace/hackathon-idea-s2026/issues"
   },
-  "homepage": "https://github.com/jai-serr-ace/hackathon-idea-s2026#readme"
+  "homepage": "https://github.com/jai-serr-ace/hackathon-idea-s2026#readme",
+  "dependencies": {
+    "@google/genai": "^1.50.1",
+    "ejs": "^3.1.10",
+    "express": "^5.2.1"
+  }
 }

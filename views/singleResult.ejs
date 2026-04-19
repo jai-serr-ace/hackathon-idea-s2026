@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Lo-Cal Adventure</title>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body class="results-page">
+    <%- include("partials/navbar") %>
+
+    <main class="single-result-shell">
+        <section class="single-result-hero">
+            <p class="eyebrow">Random Pick</p>
+            <h1>Your next Lo-Cal adventure</h1>
+            <p class="results-copy">One spontaneous local spot, chosen from the `/singleResult` route.</p>
+        </section>
+
+        <% if (store) { %>
+            <article class="single-result-card">
+                <% if (store.image) { %>
+                    <img class="single-result-image" src="<%= store.image %>" alt="<%= store.name || 'Unnamed place' %>">
+                <% } else if (store.address) { %>
+                    <img
+                        class="single-result-image"
+                        src="/api/mapbox/static-image?q=<%= encodeURIComponent(store.address) %>&width=1200&height=800&zoom=14"
+                        alt="Map preview for <%= store.name || 'Unnamed place' %>"
+                    >
+                <% } else { %>
+                    <div class="single-result-image result-image-placeholder" aria-hidden="true">No image</div>
+                <% } %>
+
+                <div class="single-result-body">
+                    <p class="result-kicker">Featured Adventure</p>
+                    <h2><%= store.name || "Unnamed place" %></h2>
+                    <p class="result-description"><%= store.description || "No description was provided." %></p>
+
+                    <dl class="result-meta">
+                        <div>
+                            <dt>Address</dt>
+                            <dd><%= store.address || "Address unavailable" %></dd>
+                        </div>
+                        <div>
+                            <dt>Phone</dt>
+                            <dd><%= store.phone || "Not listed" %></dd>
+                        </div>
+                    </dl>
+
+                    <% if (store.website) { %>
+                        <a class="result-link" href="<%= store.website %>" target="_blank" rel="noreferrer">Visit website</a>
+                    <% } else { %>
+                        <span class="result-link result-link-muted">Website unavailable</span>
+                    <% } %>
+                </div>
+            </article>
+        <% } else { %>
+            <section class="empty-state">
+                <h2>No random adventure yet</h2>
+                <p>Try again in a moment and we’ll pick another local spot.</p>
+            </section>
+        <% } %>
+    </main>
+</body>
+</html>

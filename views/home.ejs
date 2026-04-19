@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/css/stylesheet.css">
+</head>
+<body class="home-class">
+    <div class="photo-collage" aria-hidden="true">
+        <div class="photo-tile tile-1"></div>
+        <div class="photo-tile tile-2"></div>
+        <div class="photo-tile tile-3"></div>
+    </div>
+
+    <%- include("partials/navbar") %>
+
+    <main class="hero-content">
+        <section class="hero-panel">
+            <p class="eyebrow">Discover Your Next Weekend Story</p>
+            <h1>
+                Lo-Cal Adventures
+            </h1>
+            <p class="hero-copy">
+                Find indie events, hidden local spots, and small adventures worth leaving the house for.
+            </p>
+
+            <form class="search-form" method="get" action="/results">
+                <input
+                    class="search-input"
+                    type="text"
+                    placeholder="Search for local adventures..."
+                    aria-label="Search for local adventures"
+                    name="prompt"
+                >
+                <button class="search-button" type="submit">Start Exploring</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
